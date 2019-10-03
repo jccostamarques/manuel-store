@@ -41,6 +41,20 @@ public class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    public void shouldnotCreateProduct() throws Exception {
+        Product p = new Product();
+        p.setNome(null);
+        p.setDescricao("Descrição not so good");
+        p.setPreco(44.0);
+        p.setStock(6);
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/products")
+                .content(new ObjectMapper().writeValueAsString(p))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
+
 
 
 }
