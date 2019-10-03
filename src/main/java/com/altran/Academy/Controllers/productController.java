@@ -21,7 +21,8 @@ public class productController {
         return ResponseEntity.ok(productRepository.save(product));
     }
 
-    @GetMapping(params = "{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getProductById(@PathVariable int id) {
         return ResponseEntity.ok(productRepository.findById(id));
     }
@@ -36,7 +37,7 @@ public class productController {
         return ResponseEntity.ok(productRepository.save(product));
     }
 
-    @DeleteMapping(path = "/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
+    @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable int id){
         productRepository.deleteById(id);
         return ResponseEntity.ok("RIP");
