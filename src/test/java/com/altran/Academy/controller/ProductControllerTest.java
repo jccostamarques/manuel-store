@@ -55,6 +55,21 @@ public class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
+    @Test
+    public void shouldReturnProductById() throws Exception{
+
+        int id= 1;
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/products/"+ id)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
+
+    }
+    @Test
+    public void shouldReturnALLProduct() throws Exception{
+        
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/products/")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
+
+    }
 
 
 }
