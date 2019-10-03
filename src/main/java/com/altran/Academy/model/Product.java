@@ -21,7 +21,7 @@ public class Product {
     private Integer id;
 
     @Column
-    @NotNull(message = "Parametro obrigatório")
+    @NotNull(message = "{product.name.notnull}")
     private String nome;
 
     @Column
